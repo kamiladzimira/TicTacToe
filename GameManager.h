@@ -8,10 +8,11 @@ class GameManager
 {
 private:
 public:
+
+	// metoda wywolujaca metode showMenu z klasy Menu
 	void Start ()
 	{
-		cout << "Start game!" << endl;
-		Menu menu;
+		Menu menu = Menu::CreateMainMenu ();		
 		menu.showMenu ();
 	};
 };
