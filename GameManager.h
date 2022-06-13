@@ -4,17 +4,12 @@
 #include "MenuOption.h"
 using namespace std;
 
-class GameManager
-{
-private:
-public:
-
-	// metoda wywolujaca metode showMenu z klasy Menu
-	void Start ()
+	class GameManager
 	{
-		Menu menu = Menu::CreateMainMenu ();		
-		menu.showMenu ();
+	private:
+	public:
+		void Start ();
 	};
-};
+
 
 
