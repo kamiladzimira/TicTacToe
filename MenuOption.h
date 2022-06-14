@@ -3,8 +3,8 @@
 #include <string> 
 using namespace std;
 
-	class MenuOption
-	{
+class MenuOption
+{
 	private:
 		string label;
 		string enterString;
@@ -15,5 +15,5 @@ using namespace std;
 		string GetLabel ();
 		string GetEnterString ();
 		virtual void ChooseOption ();
-	};
+};
 
