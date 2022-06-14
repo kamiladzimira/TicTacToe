@@ -3,7 +3,6 @@
 #include "MenuOption.h"
 using namespace std;
 
-
 class ExitGameMenuOption : public MenuOption
 {
 public:

@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include<cstdlib>
+#include <stdlib.h>
 #include "MenuOption.h"
 #include "ExitGameMenuOption.h"
 
@@ -12,5 +14,5 @@ ExitGameMenuOption::ExitGameMenuOption (string label, string enterString, int in
 
 void ExitGameMenuOption::ChooseOption ()
 {
-
+	exit (0);
 }
