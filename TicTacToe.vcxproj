@@ -134,7 +134,6 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayMode.cpp" />
     <ClCompile Include="StartGameMenuOption.cpp" />
     <ClCompile Include="TicTacToe.cpp" />
   </ItemGroup>
@@ -146,7 +145,6 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuOption.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayMode.h" />
     <ClInclude Include="StartGameMenuOption.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
