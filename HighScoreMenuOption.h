@@ -1,8 +1,8 @@
 #pragma once
 #include <iostream>
 #include "MenuOption.h"
-
 using namespace std;
+
 	class HighScoreMenuOption : public MenuOption
 	{
 	public:

@@ -10,7 +10,7 @@ private:
 public:
     Menu (list<MenuOption*> options);
 
-    void showMenu ();
+    void runMenu ();
 
     static Menu CreateMainMenu ();
     static Menu CreateOptionsMenu ();

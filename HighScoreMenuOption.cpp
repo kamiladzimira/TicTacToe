@@ -14,5 +14,5 @@ HighScoreMenuOption::HighScoreMenuOption (string label, string enterString, int 
 void HighScoreMenuOption::ChooseOption ()
 {
 	Menu menu = Menu::CreateOptionsMenu ();
-	menu.showMenu ();
+	menu.runMenu ();
 }
