@@ -8,6 +8,7 @@ using namespace std;
 	{
 	private:
 	public:
+		GameManager ();
 		void Start ();
 	};
 

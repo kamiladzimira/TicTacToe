@@ -7,11 +7,14 @@ using namespace std;
 
 class Menu;
 
+	GameManager::GameManager ()
+	{
+	}
 	// metoda wywolujaca metode showMenu z klasy Menu
 	void GameManager::Start ()
 	{
 		Menu menu = Menu::CreateMainMenu ();
-		menu.showMenu ();
+		menu.runMenu ();
 
 		//MenuOption menuOption = menuOption;
 		//menuOption.ChooseOption ();
