@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Player.h"
+#include "BoardField.h"
 
 using namespace std;
 class Game
@@ -14,7 +15,7 @@ private:
 		{"7", "8", "9"}
 	};*/
 
-	string** board;
+	BoardField** board;
 	int size;
 	Player* playerOne;
 	Player* playerTwo;

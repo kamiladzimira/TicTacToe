@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BoardField.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HighScoreMenuOption.cpp" />
     <ClCompile Include="ExitGameMenuOption.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="TicTacToe.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BoardField.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="ExitGameMenuOption.h" />
     <ClInclude Include="GameManager.h" />

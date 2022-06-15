@@ -3,14 +3,15 @@
 #include "Game.h"
 #include <string>
 #include "Player.h"
+#include "BoardField.h"
 using namespace std;
 
 Game::Game (int size)
 {
-	board = new string * [size];
+	board = new BoardField * [size];
 	for (int i = 0; i < size; i++)
 	{
-		board[i] = new string[size];
+		board[i] = new BoardField[size];
 	}
 
 	int value = 1;
@@ -19,7 +20,7 @@ Game::Game (int size)
 		for (int j = 0; j < size; j++)
 		{
 			//int value = (j + 1) + (size * i);
-			board[i][j] = to_string (value);
+			board[i][j].sign = to_string(value);
 			value++;
 		}
 	}
@@ -68,19 +69,19 @@ void Game::displayBoard ()
 	cout << "\n\n\tTic Tac Toe\n\n";
 
 	cout << endl; cout << endl;
-	string s = board[0][0];
+	string s = board[0][0].sign;
 	cout << "\t     |     |     " << endl;
-	cout << "\t  " << board[0][0] << "  |  " << board[0][1] << "  |  " << board[0][2] << endl;
+	cout << "\t  " << board[0][0].sign << "  |  " << board[0][1].sign << "  |  " << board[0][2].sign << endl;
 
 	cout << "\t_____|_____|_____" << endl;
 	cout << "\t     |     |     " << endl;
 
-	cout << "\t  " << board[1][0] << "  |  " << board[1][1] << "  |  " << board[1][2] << endl;
+	cout << "\t  " << board[1][0].sign << "  |  " << board[1][1].sign << "  |  " << board[1][2].sign << endl;
 
 	cout << "\t_____|_____|_____" << endl;
 	cout << "\t     |     |     " << endl;
 
-	cout << "\t  " << board[2][0] << "  |  " << board[2][1] << "  |  " << board[2][2] << endl;
+	cout << "\t  " << board[2][0].sign << "  |  " << board[2][1].sign << "  |  " << board[2][2].sign << endl;
 
 	cout << "\t     |     |     \n" << endl << endl;
 }
@@ -129,14 +130,14 @@ bool Game::isPlayerWin (Player player)
 		{
 			if (i == j)
 			{
-				if (board[i][j] != player.getSign ())
+				if (board[i][j].sign != player.getSign ())
 				{
 					isCorrect1 = false;
 				}
 			}
 			if (i + j == size -1)
 			{
-				if (board[i][j] != player.getSign ())
+				if (board[i][j].sign != player.getSign ())
 				{
 					isCorrect2 = false;
 				}
