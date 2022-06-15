@@ -88,24 +88,62 @@ void Game::displayBoard ()
 void Game::playerChooices ()
 {
 	int counter = 0;
-	string sign;
+	string fieldNumber;
+	string playerSign;
 
 	while (counter < 5)
 	{
+
 		displayBoard ();
 		if (counter % 2 == 0)
 		{
 			cout << playerOne->getName () << "'s choice: " << endl;
+			playerSign = playerOne->getSign ();
 		}
 		else
 		{
 			cout << playerTwo->getName () << "'s choice: " << endl;
+			playerSign = playerTwo->getSign ();
+
 		}
 		counter++;
-		cin >> sign;
+
+		cin >> fieldNumber;
 		system ("cls");
 	}
+}
 
+void Game::setSign (Player player, string fieldNumber)
+{
+
+}
+
+bool Game::isPlayerWin (Player player)
+{
+	bool isCorrect1 = true;
+	bool isCorrect2 = true;
+
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			if (i == j)
+			{
+				if (board[i][j] != player.getSign ())
+				{
+					isCorrect1 = false;
+				}
+			}
+			if (i + j == size -1)
+			{
+				if (board[i][j] != player.getSign ())
+				{
+					isCorrect2 = false;
+				}
+			}
+		}
+	}
+	return isCorrect1 || isCorrect2;
 }
 
 

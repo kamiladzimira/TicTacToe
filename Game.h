@@ -15,16 +15,20 @@ private:
 	};*/
 
 	string** board;
+	int size;
 	Player* playerOne;
 	Player* playerTwo;
 	Player* getPlayerFromUser (string pt);
 	void displayGreeting (Player player);
+	bool isPlayerWin (Player player);
+	void setSign (Player player, string fieldNumber);
 
 public:
 	Game (int size);
 	void displayBoard ();
 	void startGame ();
 	void playerChooices ();
+	
 };
 
 
