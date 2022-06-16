@@ -21,8 +21,9 @@ private:
 	Player* playerTwo;
 	Player* getPlayerFromUser (string pt);
 	void displayGreeting (Player player);
-	bool isPlayerWin (Player player);
+	bool isPlayerWon (Player player);
 	void setSign (Player player, string fieldNumber);
+	bool isTie ();
 
 public:
 	Game (int size);

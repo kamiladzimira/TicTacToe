@@ -20,7 +20,7 @@ Game::Game (int size)
 		for (int j = 0; j < size; j++)
 		{
 			//int value = (j + 1) + (size * i);
-			board[i][j].sign = to_string(value);
+			board[i][j].fieldNumber = value;
 			value++;
 		}
 	}
@@ -69,19 +69,19 @@ void Game::displayBoard ()
 	cout << "\n\n\tTic Tac Toe\n\n";
 
 	cout << endl; cout << endl;
-	string s = board[0][0].sign;
+	string s = board[0][0].getContent();
 	cout << "\t     |     |     " << endl;
-	cout << "\t  " << board[0][0].sign << "  |  " << board[0][1].sign << "  |  " << board[0][2].sign << endl;
+	cout << "\t  " << board[0][0].getContent () << "  |  " << board[0][1].getContent () << "  |  " << board[0][2].getContent () << endl;
 
 	cout << "\t_____|_____|_____" << endl;
 	cout << "\t     |     |     " << endl;
 
-	cout << "\t  " << board[1][0].sign << "  |  " << board[1][1].sign << "  |  " << board[1][2].sign << endl;
+	cout << "\t  " << board[1][0].getContent () << "  |  " << board[1][1].getContent () << "  |  " << board[1][2].getContent () << endl;
 
 	cout << "\t_____|_____|_____" << endl;
 	cout << "\t     |     |     " << endl;
 
-	cout << "\t  " << board[2][0].sign << "  |  " << board[2][1].sign << "  |  " << board[2][2].sign << endl;
+	cout << "\t  " << board[2][0].getContent () << "  |  " << board[2][1].getContent () << "  |  " << board[2][2].getContent () << endl;
 
 	cout << "\t     |     |     \n" << endl << endl;
 }
@@ -92,7 +92,7 @@ void Game::playerChooices ()
 	string fieldNumber;
 	string playerSign;
 
-	while (counter < 5)
+	while (isPlayerWon(*playerOne) || isPlayerWon (*playerTwo))
 	{
 
 		displayBoard ();
@@ -119,7 +119,7 @@ void Game::setSign (Player player, string fieldNumber)
 
 }
 
-bool Game::isPlayerWin (Player player)
+bool Game::isPlayerWon (Player player)
 {
 	bool isCorrect1 = true;
 	bool isCorrect2 = true;
@@ -142,9 +142,16 @@ bool Game::isPlayerWin (Player player)
 					isCorrect2 = false;
 				}
 			}
+			else
+			{
+				cout<< "Nobody won!" << endl;
+			}
 		}
 	}
 	return isCorrect1 || isCorrect2;
 }
 
-
+bool Game::isTie ()
+{
+	return 1;
+}

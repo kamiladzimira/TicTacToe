@@ -10,6 +10,8 @@ private:
 public:
 	BoardField ();
 	string sign;
+	int fieldNumber;
+	string getContent ();
 };
 
 
