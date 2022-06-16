@@ -126,13 +126,24 @@ void Game::playerChooices ()
 			playerSign = playerTwo->getSign ();
 
 		}
-		counter++;
 
-		cin >> fieldNumber;
-		setSign (playerSign, fieldNumber);
+		if (cin >> fieldNumber)
+		{
+			if (tryToSetSign (playerSign, fieldNumber))
+			{
+				isPlayerOneWon = isPlayerWon (*playerOne);
+				isPlayerTwoWon = isPlayerWon (*playerTwo);
+				counter++;
+			}
+		}
+		else
+		{
+			cin.clear ();
+			cin.ignore (40, '\n');
+		}
 		system ("cls");
-		isPlayerOneWon = isPlayerWon (*playerOne);
-		isPlayerTwoWon = isPlayerWon (*playerTwo);
+
+
 	}
 	Player* winner = NULL;
 	if (isPlayerOneWon)
@@ -156,12 +167,24 @@ void Game::playerChooices ()
 	menu.runMenu ();
 }
 
-void Game::setSign (string sign, int fieldNumber)
+bool Game::tryToSetSign (string sign, int fieldNumber)
 {
+	if (fieldNumber > (size*size))
+	{
+		return false;
+	}
+
 	int i = (fieldNumber - 1) / size;
 	int j = (fieldNumber - 1) % size;
 
+	if (!board[i][j].sign.empty())
+	{
+		return false;
+	}
+
 	board[i][j].sign = sign;
+
+	return true;
 }
 
 bool Game::isPlayerWon (Player player)

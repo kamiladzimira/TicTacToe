@@ -22,7 +22,7 @@ private:
 	Player* getPlayerFromUser (string pt);
 	void displayGreeting (Player player);
 	bool isPlayerWon (Player player);
-	void setSign (string sign, int fieldNumber);
+	bool tryToSetSign (string sign, int fieldNumber);
 public:
 	Game (int size);
 	void displayBoard ();
