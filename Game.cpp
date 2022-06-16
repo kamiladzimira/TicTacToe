@@ -84,24 +84,37 @@ void Game::startGame ()
 
 void Game::displayBoard ()
 {
-	cout << "\n\n\tTic Tac Toe\n\n";
+	cout << "\n\tTic Tac Toe\n\n";
 
-	cout << endl; cout << endl;
-	string s = board[0][0].getContent ();
-	cout << "\t     |     |     " << endl;
-	cout << "\t  " << board[0][0].getContent () << "  |  " << board[0][1].getContent () << "  |  " << board[0][2].getContent () << endl;
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			if (j==0)
+			{
+				cout << " ";
+			}
+			cout << board[i][j].getContent ();
+			if (j < size - 1)
+			{
+				cout << " | ";
+			}
+		}
+		cout << endl;
+		if (i < size - 1)
+		{
 
-	cout << "\t_____|_____|_____" << endl;
-	cout << "\t     |     |     " << endl;
-
-	cout << "\t  " << board[1][0].getContent () << "  |  " << board[1][1].getContent () << "  |  " << board[1][2].getContent () << endl;
-
-	cout << "\t_____|_____|_____" << endl;
-	cout << "\t     |     |     " << endl;
-
-	cout << "\t  " << board[2][0].getContent () << "  |  " << board[2][1].getContent () << "  |  " << board[2][2].getContent () << endl;
-
-	cout << "\t     |     |     \n" << endl << endl;
+			for (int k = 0; k < size; k++)
+			{
+				cout << "---";
+				if (k < size - 1)
+				{
+					cout << "|";
+				}
+			}
+		}
+		cout << endl;
+	}
 }
 
 void Game::runGameLoop ()

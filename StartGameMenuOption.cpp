@@ -12,7 +12,16 @@ StartGameMenuOption::StartGameMenuOption (string label, string enterString, int 
 
 void StartGameMenuOption::ChooseOption ()
 {
-	Game game(3);
+	int size;
+	do
+	{
+		cin.clear ();
+		cin.ignore (40, '\n');
+		cout << "Choose size for board: ";
+
+	} while (!(cin >> size));
+
+	Game game(size);
 	game.startGame ();
 
 }
