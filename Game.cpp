@@ -86,35 +86,87 @@ void Game::displayBoard ()
 {
 	cout << "\n\tTic Tac Toe\n\n";
 
+	int longestCellSize = getLongestCellSize ();
+	longestCellSize += 2;
+
+	printLine (' ', '|', longestCellSize);
+	cout << endl;
+	
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
 		{
-			if (j==0)
+			int currentCellContentSize = board[i][j].getContent ().length();
+
+			int numberOfSpaces = longestCellSize - currentCellContentSize;
+
+			int numberOfSpacesEachSide = numberOfSpaces / 2;
+			if (numberOfSpaces % 2 == 1)
+			{
+				numberOfSpacesEachSide += 1;
+			}
+
+			for (int i = 0; i < numberOfSpacesEachSide; i++)
+			{
+				cout << " ";
+			}
+			if (numberOfSpaces % 2 == 0)
 			{
 				cout << " ";
 			}
 			cout << board[i][j].getContent ();
+
+			for (int i = 0; i < numberOfSpacesEachSide; i++)
+			{
+				cout << " ";
+			}
 			if (j < size - 1)
 			{
-				cout << " | ";
+				cout << "|";
 			}
 		}
+		cout << endl;
+		printLine (' ', '|', longestCellSize);
 		cout << endl;
 		if (i < size - 1)
 		{
-
-			for (int k = 0; k < size; k++)
-			{
-				cout << "---";
-				if (k < size - 1)
-				{
-					cout << "|";
-				}
-			}
+			printLine ('-', '|', longestCellSize);
+			cout << endl;
+			printLine (' ', '|', longestCellSize);
+			cout << endl;
 		}
-		cout << endl;
 	}
+}
+
+void Game::printLine (char lineChar, char columnChar,int cellSize)
+{
+	for (int k = 0; k < size; k++)
+	{
+		for (int i = 0; i < cellSize + 1; i++)
+		{
+			cout << lineChar;
+		}
+		if (k < size - 1)
+		{
+			cout << columnChar;
+		}
+	}
+}
+
+int Game::getLongestCellSize ()
+{
+	int longestCellSize = to_string (board[size - 1][size - 1].fieldNumber).length ();
+
+	if (playerOne->getSign ().length () > longestCellSize)
+	{
+		longestCellSize = playerOne->getSign ().length ();
+	}
+
+	if (playerTwo->getSign ().length () > longestCellSize)
+	{
+		longestCellSize = playerTwo->getSign ().length ();
+	}
+	return longestCellSize;
 }
 
 void Game::runGameLoop ()
