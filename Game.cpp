@@ -78,7 +78,7 @@ void Game::startGame ()
 	cout << endl;
 	cout << "Let's start the game!" << endl;
 	cout << endl << endl;
-	playerChooices ();
+	runGameLoop ();
 
 }
 
@@ -104,7 +104,7 @@ void Game::displayBoard ()
 	cout << "\t     |     |     \n" << endl << endl;
 }
 
-void Game::playerChooices ()
+void Game::runGameLoop ()
 {
 	int counter = 0;
 	int fieldNumber;

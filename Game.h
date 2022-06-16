@@ -27,7 +27,7 @@ public:
 	Game (int size);
 	void displayBoard ();
 	void startGame ();
-	void playerChooices ();
+	void runGameLoop ();
 	bool isBoardFull ();
 	
 };
