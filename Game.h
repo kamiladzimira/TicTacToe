@@ -23,8 +23,6 @@ private:
 	void displayGreeting (Player player);
 	bool isPlayerWon (Player player);
 	void setSign (Player player, string fieldNumber);
-	bool isTie ();
-
 public:
 	Game (int size);
 	void displayBoard ();

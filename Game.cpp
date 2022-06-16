@@ -142,16 +142,8 @@ bool Game::isPlayerWon (Player player)
 					isCorrect2 = false;
 				}
 			}
-			else
-			{
-				cout<< "Nobody won!" << endl;
-			}
 		}
 	}
 	return isCorrect1 || isCorrect2;
 }
 
-bool Game::isTie ()
-{
-	return 1;
-}
