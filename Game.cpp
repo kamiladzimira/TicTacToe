@@ -4,10 +4,13 @@
 #include <string>
 #include "Player.h"
 #include "BoardField.h"
+#include "Menu.h"
 using namespace std;
 
 Game::Game (int size)
 {
+	Game::size = size;
+
 	board = new BoardField * [size];
 	for (int i = 0; i < size; i++)
 	{
@@ -39,6 +42,22 @@ Player* Game::getPlayerFromUser (string player)
 	return new Player (name, sign);
 }
 
+bool Game::isBoardFull ()
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			if (board[i][j].sign.empty ())
+			{
+				return false;
+			}
+		}
+	}
+	return true;
+
+}
+
 void Game::displayGreeting (Player player)
 {
 	cout << "Hi " << player.getName () << ", you play with sign: " << player.getSign () << "." << endl;
@@ -63,13 +82,12 @@ void Game::startGame ()
 
 }
 
-
 void Game::displayBoard ()
 {
 	cout << "\n\n\tTic Tac Toe\n\n";
 
 	cout << endl; cout << endl;
-	string s = board[0][0].getContent();
+	string s = board[0][0].getContent ();
 	cout << "\t     |     |     " << endl;
 	cout << "\t  " << board[0][0].getContent () << "  |  " << board[0][1].getContent () << "  |  " << board[0][2].getContent () << endl;
 
@@ -89,12 +107,13 @@ void Game::displayBoard ()
 void Game::playerChooices ()
 {
 	int counter = 0;
-	string fieldNumber;
+	int fieldNumber;
 	string playerSign;
+	bool isPlayerOneWon = false;
+	bool isPlayerTwoWon = false;
 
-	while (isPlayerWon(*playerOne) || isPlayerWon (*playerTwo))
+	while (!isPlayerOneWon && !isPlayerTwoWon && !isBoardFull())
 	{
-
 		displayBoard ();
 		if (counter % 2 == 0)
 		{
@@ -110,19 +129,54 @@ void Game::playerChooices ()
 		counter++;
 
 		cin >> fieldNumber;
+		setSign (playerSign, fieldNumber);
 		system ("cls");
+		isPlayerOneWon = isPlayerWon (*playerOne);
+		isPlayerTwoWon = isPlayerWon (*playerTwo);
 	}
+	Player* winner = NULL;
+	if (isPlayerOneWon)
+	{
+		winner = playerOne;
+	}
+	else if(isPlayerTwoWon)
+	{
+		winner = playerTwo;
+	}
+	if (winner != NULL)
+	{
+		cout << "Player " << winner->getName () << " won!" << endl;
+	}
+	else
+	{
+		cout << "Nobody won :(" << endl;
+	}
+	cout << endl;
+	Menu menu = Menu::CreateMainMenu ();
+	menu.runMenu ();
 }
 
-void Game::setSign (Player player, string fieldNumber)
+void Game::setSign (string sign, int fieldNumber)
 {
+	int i = (fieldNumber - 1) / size;
+	int j = (fieldNumber - 1) % size;
 
+	board[i][j].sign = sign;
 }
 
 bool Game::isPlayerWon (Player player)
 {
-	bool isCorrect1 = true;
-	bool isCorrect2 = true;
+	bool isDiagonalCorrect1 = true;
+	bool isDiagonalCorrect2 = true;
+	bool* areRowsCorrect = new bool[size];
+	bool* areColumnsCorrect = new bool[size];
+
+	for (int i = 0; i < size; i++)
+	{
+		areRowsCorrect[i] = true;
+		areColumnsCorrect[i] = true;
+	}
+
 
 	for (int i = 0; i < size; i++)
 	{
@@ -132,18 +186,33 @@ bool Game::isPlayerWon (Player player)
 			{
 				if (board[i][j].sign != player.getSign ())
 				{
-					isCorrect1 = false;
+					isDiagonalCorrect1 = false;
 				}
 			}
-			if (i + j == size -1)
+			if (i + j == size - 1)
 			{
 				if (board[i][j].sign != player.getSign ())
 				{
-					isCorrect2 = false;
+					isDiagonalCorrect2 = false;
 				}
 			}
+			if (board[i][j].sign != player.getSign())
+			{
+				areRowsCorrect[i] = false;
+				areColumnsCorrect[j] = false;
+			}
+
 		}
 	}
-	return isCorrect1 || isCorrect2;
+
+	for (int i = 0; i < size; i++)
+	{
+		if (areRowsCorrect[i] || areColumnsCorrect[i])
+		{
+			return true;
+		}
+	}
+
+	return isDiagonalCorrect1 || isDiagonalCorrect2; 
 }
 

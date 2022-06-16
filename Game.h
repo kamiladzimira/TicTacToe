@@ -22,12 +22,13 @@ private:
 	Player* getPlayerFromUser (string pt);
 	void displayGreeting (Player player);
 	bool isPlayerWon (Player player);
-	void setSign (Player player, string fieldNumber);
+	void setSign (string sign, int fieldNumber);
 public:
 	Game (int size);
 	void displayBoard ();
 	void startGame ();
 	void playerChooices ();
+	bool isBoardFull ();
 	
 };
 
