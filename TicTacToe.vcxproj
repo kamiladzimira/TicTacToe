@@ -133,7 +133,6 @@
     <ClCompile Include="ExitGameMenuOption.cpp" />
     <ClCompile Include="MenuOption.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="StartGameMenuOption.cpp" />
     <ClCompile Include="TicTacToe.cpp" />
@@ -142,7 +141,6 @@
     <ClInclude Include="BoardField.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="ExitGameMenuOption.h" />
-    <ClInclude Include="GameManager.h" />
     <ClInclude Include="HighScoreMenuOption.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuOption.h" />
