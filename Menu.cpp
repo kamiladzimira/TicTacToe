@@ -7,7 +7,6 @@ using namespace std;
 #include "StartGameMenuOption.h"
 #include "ExitGameMenuOption.h"
 #include "Menu.h"
-#include "BoardGame.h"
 
 Menu::Menu (list<MenuOption*> options)
 {
@@ -62,7 +61,18 @@ Menu Menu::CreateOptionsMenu ()
 	list<MenuOption*> menuOptions ({startGame, goBackToMenu});
 
 	Menu menu (menuOptions);
-	//Menu* m = new Menu (menuOptions);
+	cout << "Choose option: " << endl;
+	return menu;
+}
+
+Menu Menu::CreateEndGameMenu ()
+{
+	StartGameMenuOption* startGame = new StartGameMenuOption ("Once again ", "s", 1);
+	ExitGameMenuOption* exitGame = new ExitGameMenuOption ("Exit ", "e", 2);
+
+	list<MenuOption*> menuOptions ({startGame, exitGame});
+
+	Menu menu (menuOptions);
 	cout << "Choose option: " << endl;
 	return menu;
 }

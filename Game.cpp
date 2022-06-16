@@ -163,7 +163,7 @@ void Game::runGameLoop ()
 		cout << "Nobody won :(" << endl;
 	}
 	cout << endl;
-	Menu menu = Menu::CreateMainMenu ();
+	Menu menu = Menu::CreateEndGameMenu ();
 	menu.runMenu ();
 }
 
