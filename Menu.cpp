@@ -8,9 +8,10 @@ using namespace std;
 #include "ExitGameMenuOption.h"
 #include "Menu.h"
 
-Menu::Menu (list<MenuOption*> options)
+Menu::Menu (list<MenuOption*> options, string menuHeader)
 {
 	Menu::options = options;
+	Menu::menuHeader = menuHeader;
 }
 
 // tworze metode, w ktorej iteruje po kazdym elemencie listy, zaczynajac od 1 elementu(begin) i iteruje dopoki i jest rozne od ostatniego elementu(end)
@@ -18,6 +19,10 @@ Menu::Menu (list<MenuOption*> options)
 // nastepnie wywoluje metode GetLabel ze wzgledu na to, ze lista jest typu MenuOption, w ktorej jest metoda GetLabel
 void Menu::runMenu ()
 {
+	if (!menuHeader.empty ())
+	{
+		cout << menuHeader << endl;
+	}
 	for (std::list<MenuOption*>::iterator i = options.begin (); i != options.end (); ++i)
 	{
 		//cout << (*i)->GetLabel () << endl;
@@ -48,20 +53,22 @@ Menu Menu::CreateMainMenu ()
 
 	list<MenuOption*> menuOptions ({startGame, highScore, exitGame});
 
-	Menu menu (menuOptions);
+	Menu menu (menuOptions, "");
 	cout << "Choose option: " << endl;
 	return menu;
 }
 
 Menu Menu::CreateOptionsMenu ()
 {
-	StartGameMenuOption* startGame = new StartGameMenuOption ("Start ", "s", 1);
-	MenuOption* goBackToMenu = new MenuOption ("Go back to menu ", "g", 2);
+	MenuOption* goBackToMenu1 = new MenuOption ("Go back to menu ", "g", 1);
+	MenuOption* goBackToMenu2 = new MenuOption ("Go back to menu ", "g", 2);
+	MenuOption* goBackToMenu3 = new MenuOption ("Go back to menu ", "g", 3);
+	MenuOption* goBackToMenu4 = new MenuOption ("Go back to menu ", "g", 4);
+	MenuOption* goBackToMenu5 = new MenuOption ("Go back to menu ", "g", 5);
 
-	list<MenuOption*> menuOptions ({startGame, goBackToMenu});
+	list<MenuOption*> menuOptions ({goBackToMenu1,goBackToMenu2,goBackToMenu3,goBackToMenu4,goBackToMenu5});
 
-	Menu menu (menuOptions);
-	cout << "Choose option: " << endl;
+	Menu menu (menuOptions, "Many Options: ");
 	return menu;
 }
 
@@ -72,8 +79,7 @@ Menu Menu::CreateEndGameMenu ()
 
 	list<MenuOption*> menuOptions ({startGame, exitGame});
 
-	Menu menu (menuOptions);
-	cout << "Choose option: " << endl;
+	Menu menu (menuOptions, "Want to have some more fun?");
 	return menu;
 }
 

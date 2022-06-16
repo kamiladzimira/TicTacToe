@@ -6,9 +6,10 @@ using namespace std;
 class Menu
 {
 private:
+	string menuHeader;
 	list<MenuOption*> options;
 public:
-	Menu (list<MenuOption*> options);
+	Menu (list<MenuOption*> options, string menuHeader);
 
 	void runMenu ();
 
