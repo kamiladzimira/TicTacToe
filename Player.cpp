@@ -2,7 +2,6 @@
 #include "Player.h"
 #include <iostream>
 #include <string>
-//#include "Game.h"
 using namespace std;
 
 Player::Player (string name, string sign)

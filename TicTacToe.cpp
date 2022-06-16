@@ -1,13 +1,12 @@
 #pragma once
 #include <iostream>
-#include "GameManager.h"
-
+#include "Menu.h"
 using namespace std;
 
     int main ()
     {
-        GameManager gameManager;
-        gameManager.Start ();
+        Menu menu = Menu::CreateMainMenu ();
+        menu.runMenu ();
         return 1;
     }
 

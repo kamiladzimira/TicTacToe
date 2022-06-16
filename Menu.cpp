@@ -53,8 +53,7 @@ Menu Menu::CreateMainMenu ()
 
 	list<MenuOption*> menuOptions ({startGame, highScore, exitGame});
 
-	Menu menu (menuOptions, "");
-	cout << "Choose option: " << endl;
+	Menu menu (menuOptions, "Choose an option: \n");
 	return menu;
 }
 
@@ -68,7 +67,7 @@ Menu Menu::CreateOptionsMenu ()
 
 	list<MenuOption*> menuOptions ({goBackToMenu1,goBackToMenu2,goBackToMenu3,goBackToMenu4,goBackToMenu5});
 
-	Menu menu (menuOptions, "Many Options: ");
+	Menu menu (menuOptions, "Many Options: \n");
 	return menu;
 }
 
@@ -79,7 +78,7 @@ Menu Menu::CreateEndGameMenu ()
 
 	list<MenuOption*> menuOptions ({startGame, exitGame});
 
-	Menu menu (menuOptions, "Want to have some more fun?");
+	Menu menu (menuOptions, "Want to have some more fun?\n");
 	return menu;
 }
 
