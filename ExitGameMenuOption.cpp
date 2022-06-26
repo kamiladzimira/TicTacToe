@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include<cstdlib>
+#include <cstdlib>
 #include <stdlib.h>
 #include "MenuOption.h"
 #include "ExitGameMenuOption.h"

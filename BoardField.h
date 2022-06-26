@@ -6,7 +6,6 @@ class BoardField
 {
 private:
 
-
 public:
 	BoardField ();
 	string sign;

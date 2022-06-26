@@ -13,12 +13,12 @@ Player::Player (string name, string sign)
 string Player::getName ()
 {
 	return name;
-}
+};
 
 string Player::getSign ()
 {
 	return sign;
-}
+};
 
 
 

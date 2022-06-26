@@ -1,8 +1,11 @@
 #pragma once
 #include <iostream>
+
 #include "MenuOption.h"
 #include "StartGameMenuOption.h"
 #include "Game.h"
+#include "Board.h"
+
 using namespace std;
 
 StartGameMenuOption::StartGameMenuOption (string label, string enterString, int index) : MenuOption (label, enterString, index)
